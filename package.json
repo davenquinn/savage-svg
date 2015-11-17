@@ -1,0 +1,11 @@
+{
+  "name": "svg-shim",
+  "version": "0.0.1",
+  "description": "Provides an environment to build static SVG documents",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
