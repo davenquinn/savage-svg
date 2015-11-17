@@ -6,6 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Daven Quinn",
+  "license": "MIT",
+  "dependencies": {
+    "jsdom": "^7.0.2",
+    "pretty-data": "^0.40.0",
+    "underscore": "^1.8.3"
+  }
 }
