@@ -1,8 +1,6 @@
-var buildData, cfg, data, dir, func, jsdom, pd;
-
-jsdom = require('jsdom');
-pd = require('pretty-data');
-_ = require('underscore');
+var jsdom = require('jsdom');
+var pd = require('pretty-data').pd;
+var _ = require('underscore');
 
 var defaultOptions = {
   filename: null,
@@ -13,18 +11,17 @@ var createElement = function(window, callback) {
   var doc = window.document
   var svg = doc.createElement("svg");
   var body = doc.querySelector("body");
-  body.appendElement(svg);
+  body.appendChild(svg);
   svg.setAttribute('xmlns','http://www.w3.org/2000/svg');
   callback(svg);
   return svg
 };
 
-
 module.exports = function(processor,options, callback){
   _.defaults(options,defaultOptions);
 
   if (callback == null) {
-    callback = options.callback
+    callback = options.callback;
   }
 
   jsdom.env({
@@ -34,15 +31,15 @@ module.exports = function(processor,options, callback){
       var svg = createElement(window, processor);
       var _ = jsdom.serializeDocument(svg)
           .replace(/clippath/g, "clipPath");
-      _ = pd.pd.xml(_);
+      _ = pd.xml(_);
 
       if (options.filename == null) {
         callback(_);
       } else {
-        fs.writeFileSync(options.filename,_)
+        var fs = require('fs');
+        fs.writeFileSync(options.filename,_);
         callback();
       }
     }
   });
-
 };
