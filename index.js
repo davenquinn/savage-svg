@@ -4,16 +4,16 @@ var _ = require('underscore');
 
 var defaultOptions = {
   filename: null,
-  callback: function(d) {}
+  callback: function(d) {},
+  xlink: true
 }
 
-var createElement = function(window, callback) {
+var createElement = function(window) {
   var doc = window.document
   var svg = doc.createElement("svg");
   var body = doc.querySelector("body");
   body.appendChild(svg);
   svg.setAttribute('xmlns','http://www.w3.org/2000/svg');
-  callback(svg);
   return svg
 };
 
@@ -29,15 +29,22 @@ module.exports = function(processor,options, callback){
     features: {QuerySelector: true},
     done: function(err, window) {
       var svg = createElement(window, processor);
-      var _ = jsdom.serializeDocument(svg)
+      if (options.xlink) {
+        svg.setAttribute('xmlns:xlink',"http://www.w3.org/1999/xlink");
+      }
+      processor(svg);
+      var a = jsdom.serializeDocument(svg)
           .replace(/clippath/g, "clipPath");
-      _ = pd.xml(_);
+      if (options.xlink) {
+        a = a.replace(/href/g,"xlink:href");
+      }
+      a = pd.xml(a);
 
       if (options.filename == null) {
-        callback(_);
+        callback(a);
       } else {
         var fs = require('fs');
-        fs.writeFileSync(options.filename,_);
+        fs.writeFileSync(options.filename,a);
         callback();
       }
     }
