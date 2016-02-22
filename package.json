@@ -1,13 +1,11 @@
 {
-  "name": "svgist",
-  "version": "0.0.1",
+  "name": "savage-svg",
+  "version": "0.0.2",
   "description": "Builds static SVG documents",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Daven Quinn",
   "license": "MIT",
+  "repository": "https://github.com/davenquinn/savage-svg.git",
   "dependencies": {
     "jsdom": "<4",
     "pretty-data": "^0.40.0",
