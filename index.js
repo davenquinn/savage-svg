@@ -32,7 +32,7 @@ module.exports = function(processor,options, callback){
       if (options.xlink) {
         svg.setAttribute('xmlns:xlink',"http://www.w3.org/1999/xlink");
       }
-      processor(svg);
+      processor(svg,window)
       var a = jsdom.serializeDocument(svg)
           .replace(/clippath/g, "clipPath");
       if (options.xlink) {
