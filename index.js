@@ -28,6 +28,7 @@ module.exports = function(processor,options, callback){
     html: "<html><body></body></html>",
     features: {QuerySelector: true},
     done: function(err, window) {
+      global.window = window;
       var svg = createElement(window, processor);
       if (options.xlink) {
         svg.setAttribute('xmlns:xlink',"http://www.w3.org/1999/xlink");
