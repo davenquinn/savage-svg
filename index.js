@@ -34,7 +34,9 @@ module.exports = function(processor,options, callback){
       }
       processor(svg,window)
       var a = jsdom.serializeDocument(svg)
-          .replace(/clippath/g, "clipPath");
+          .replace(/clippath/g, "clipPath")
+          .replace(/textpath/g, "textPath")
+          .replace(/textarea/g, "textArea");
       if (options.xlink) {
         a = a.replace(/href/g,"xlink:href");
       }
