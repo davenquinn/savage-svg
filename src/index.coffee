@@ -1,6 +1,7 @@
-jsdom = require('jsdom')
-pd = require('pretty-data').pd
-_ = require('underscore')
+jsdom = require 'jsdom'
+_ = require 'underscore'
+{pd} = require 'pretty-data'
+
 defaultOptions =
   filename: null
   callback: (d) ->
@@ -27,7 +28,11 @@ module.exports = (processor, options, callback) ->
       if options.xlink
         svg.setAttribute 'xmlns:xlink', 'http://www.w3.org/1999/xlink'
       processor svg, window
-      a = jsdom.serializeDocument(svg).replace(/clippath/g, 'clipPath').replace(/textpath/g, 'textPath').replace(/textarea/g, 'textArea')
+      a = jsdom
+        .serializeDocument(svg)
+        .replace(/clippath/g, 'clipPath')
+        .replace(/textpath/g, 'textPath')
+        .replace(/textarea/g, 'textArea')
       if options.xlink
         a = a.replace(/href/g, 'xlink:href')
       a = pd.xml(a)
@@ -37,6 +42,4 @@ module.exports = (processor, options, callback) ->
         fs = require('fs')
         fs.writeFileSync options.filename, a
         callback()
-      return
-  return
 
