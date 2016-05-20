@@ -29,7 +29,7 @@ savage func, filename: 'output.svg'
 
 ## Caveats
 
-Because the DOM is entirely synthetic, the SVG API is rather incomplete.
+Because the JSDOM DOM is entirely synthetic, the SVG API is incomplete.
 Notably, the `getBBox` API for querying positions is not supported
 by JSDOM, so all positioning needs to be done manually.
 Stylesheet support may be spotty as well, but this has not been tested.
