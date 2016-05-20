@@ -1,7 +1,7 @@
 {
   "name": "savage-svg",
   "version": "0.0.2",
-  "description": "Builds static SVG documents",
+ "description": "Builds static SVG documents using JSDOM",
   "main": "index.js",
   "author": "Daven Quinn",
   "license": "MIT",
