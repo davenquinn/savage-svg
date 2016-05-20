@@ -22,7 +22,7 @@ createSVG = ->
     .attr cx: s cy: s, r: s
     .attr fill: 'purple'
 
-describe 'simple creation', ->
+describe 'simple svg', ->
   fp = path.join __dirname, 'simple.svg'
   testSVG = fs.readFileSync fp
 
