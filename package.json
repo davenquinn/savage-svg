@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": "https://github.com/davenquinn/savage-svg.git",
   "dependencies": {
-    "jsdom": "<4",
+    "jsdom": "<8",
     "pretty-data": "^0.40.0",
     "underscore": "^1.8.3"
   }

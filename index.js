@@ -1,4 +1,4 @@
-var jsdom = require('jsdom');
+var jsdom = require('jsdom')
 var pd = require('pretty-data').pd;
 var _ = require('underscore');
 
