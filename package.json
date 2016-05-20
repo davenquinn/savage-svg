@@ -6,9 +6,19 @@
   "author": "Daven Quinn",
   "license": "MIT",
   "repository": "https://github.com/davenquinn/savage-svg.git",
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script/register"
+  },
   "dependencies": {
     "jsdom": "<8",
     "pretty-data": "^0.40.0",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-xml": "^0.3.1",
+    "coffee-script": "^1.10.0",
+    "d3": "^3.5.17",
+    "mocha": "^2.4.5"
   }
 }
