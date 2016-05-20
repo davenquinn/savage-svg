@@ -1,5 +1,6 @@
 path = require 'path'
 fs = require 'fs'
+Horseman = require 'node-horseman'
 
 d3 = require 'd3'
 savage = require '..'
@@ -33,3 +34,15 @@ describe 'simple svg', ->
   it "should not produce matching xml when xlink:true is specified", ->
     savage createSVG, xlink: true, (outString)->
       expect(outString).xml.not.to.equal(testSVG)
+
+  it "should work with phantomjs", ->
+    horseman = new Horseman()
+
+    fn = (d)-> $('body').html d
+    out = horseman
+      .open 'about:blank'
+      .evaluate fn, testSVG.toString('utf8')
+      .html('body')
+      .then (outString)->
+        expect(outString).xml.to.equal(testSVG)
+      .close()
