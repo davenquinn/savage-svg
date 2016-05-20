@@ -7,7 +7,8 @@
   "license": "MIT",
   "repository": "https://github.com/davenquinn/savage-svg.git",
   "scripts": {
-    "test": "mocha --compilers coffee:coffee-script/register"
+    "compile": "coffee -c -o lib src",
+    "test": "npm run compile && mocha --compilers coffee:coffee-script/register"
   },
   "dependencies": {
     "jsdom": "<8",
