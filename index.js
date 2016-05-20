@@ -28,13 +28,16 @@ module.exports = function(processor,options, callback){
     html: "<html><body></body></html>",
     features: {QuerySelector: true},
     done: function(err, window) {
+      global.window = window;
       var svg = createElement(window, processor);
       if (options.xlink) {
         svg.setAttribute('xmlns:xlink',"http://www.w3.org/1999/xlink");
       }
       processor(svg,window)
       var a = jsdom.serializeDocument(svg)
-          .replace(/clippath/g, "clipPath");
+          .replace(/clippath/g, "clipPath")
+          .replace(/textpath/g, "textPath")
+          .replace(/textarea/g, "textArea");
       if (options.xlink) {
         a = a.replace(/href/g,"xlink:href");
       }
