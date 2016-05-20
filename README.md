@@ -34,8 +34,12 @@ Notably, the `getBBox` API for querying positions is not supported
 by JSDOM, so all positioning needs to be done manually.
 Stylesheet support may be spotty as well, but this has not been tested.
 
+DOM manipulation in PhantomJS may be enabled in the future, but it seems like the
+browser/node split will frustrate this for the time being.
+
 ## TODO
 
 [x] Move to a more recent version of JSDOM
 [x] Async support
-[ ] PhantomJS support for direct PDF rendering
+[ ] PhantomJS support for direct PDF rendering (this is proving
+problematic).

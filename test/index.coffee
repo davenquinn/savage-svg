@@ -37,7 +37,6 @@ describe 'simple svg', ->
 
   it "should work with phantomjs", ->
     horseman = new Horseman()
-
     fn = (d)-> $('body').html d
     out = horseman
       .open 'about:blank'
