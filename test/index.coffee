@@ -3,7 +3,7 @@ fs = require 'fs'
 Horseman = require 'node-horseman'
 
 d3 = require 'd3'
-savage = require '..'
+savage = require '../lib'
 
 chaiXml = require 'chai-xml'
 chai = require 'chai'

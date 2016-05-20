@@ -2,7 +2,7 @@
   "name": "savage-svg",
   "version": "0.0.2",
   "description": "Builds static SVG documents using JSDOM",
-  "main": "index.js",
+  "main": "lib/index.js",
   "author": "Daven Quinn",
   "license": "MIT",
   "repository": "https://github.com/davenquinn/savage-svg.git",
