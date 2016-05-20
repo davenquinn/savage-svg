@@ -34,9 +34,8 @@ Notably, the `getBBox` API for querying positions is not supported
 by JSDOM, so all positioning needs to be done manually.
 Stylesheet support may be spotty as well, but this has not been tested.
 
-Asynchronous operation is not currently supported, but this is an easy fix.
-
 ## TODO
 
-- Move to a more recent version of JSDOM
-- Async support
+[x] Move to a more recent version of JSDOM
+[x] Async support
+[ ] PhantomJS support for direct PDF rendering
