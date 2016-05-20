@@ -41,5 +41,6 @@ browser/node split will frustrate this for the time being.
 
 [x] Move to a more recent version of JSDOM
 [x] Async support
-[ ] PhantomJS support for direct PDF rendering (this is proving
+[-] PhantomJS support for direct PDF rendering (this is proving
 problematic).
+[ ] Move headless browser to nightmare
