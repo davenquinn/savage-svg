@@ -4,7 +4,7 @@ _ = require 'underscore'
 
 defaultOptions =
   filename: null
-  callback: (d) ->
+  callback: ->
   xlink: true
 
 createElement = (window) ->
@@ -17,8 +17,8 @@ createElement = (window) ->
 
 module.exports = (processor, options, callback) ->
   _.defaults options, defaultOptions
-  if callback == null
-    callback = options.callback
+  console.log options
+  callback ?= options.callback
   jsdom.env
     html: '<html><body></body></html>'
     features: QuerySelector: true
