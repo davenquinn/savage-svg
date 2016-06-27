@@ -1,6 +1,7 @@
 path = require 'path'
 fs = require 'fs'
 Horseman = require 'node-horseman'
+Nightmare = require 'nightmare'
 
 d3 = require 'd3'
 savage = require '../src'
@@ -35,13 +36,27 @@ describe 'simple svg', ->
     savage createSVG, xlink: true, (outString)->
       expect(outString).xml.not.to.equal(testSVG)
 
+  svgString = testSVG.toString('utf8')
+  expectEquality = (outString)->
+    expect(outString).xml.to.equal(testSVG)
+
   it "should work with phantomjs", ->
     horseman = new Horseman()
     fn = (d)-> $('body').html d
     out = horseman
       .open 'about:blank'
-      .evaluate fn, testSVG.toString('utf8')
+      .evaluate fn, svgString
       .html('body')
-      .then (outString)->
-        expect(outString).xml.to.equal(testSVG)
+      .then expectEquality
       .close()
+
+  it "should work with nightmare", ->
+    fn = (d)->document.querySelector('body').innerHtml = d
+    nightmare = Nightmare()
+      .goto 'about:blank'
+      .evaluate fn, svgString
+      .evaluate ->
+        b = document.querySelector('body')
+        b.innerHtml
+      .end()
+      .then expectEquality
